@@ -1,5 +1,5 @@
 // src/pages/PropertyDetails.js
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./PropertyDetails.css";
 
@@ -7,7 +7,8 @@ export default function PropertyDetails() {
   const { id } = useParams();
   const [property, setProperty] = useState(null);
 
-  const defaultProperties = [
+
+  const defaultProperties = useMemo(() => [
     {
       id: 1,
       title: "2BHK Apartment",
@@ -61,8 +62,8 @@ export default function PropertyDetails() {
       type: "Apartment",
       image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914",
       description: "Affordable city apartment in prime location."
-    },
-  ];
+    }
+  ], []);
 
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("properties")) || [];
@@ -73,7 +74,7 @@ export default function PropertyDetails() {
     );
 
     setProperty(found);
-  }, [id]);
+  }, [id, defaultProperties]); 
 
   if (!property) {
     return (
@@ -88,13 +89,10 @@ export default function PropertyDetails() {
     <div className="details-container">
       <div className="details-card">
 
-        {/* Property Image */}
         <img src={property.image} alt={property.title} />
 
         <div className="details-content">
-
           <h2>{property.title}</h2>
-
           <p><strong>Location:</strong> {property.location}</p>
           <p><strong>Type:</strong> {property.type}</p>
 
@@ -109,7 +107,6 @@ export default function PropertyDetails() {
           <Link to="/properties" className="back-btn">
             ← Back to Properties
           </Link>
-
         </div>
       </div>
     </div>
