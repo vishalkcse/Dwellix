@@ -1,4 +1,3 @@
-// src/App.js
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
@@ -12,7 +11,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import AddProperty from "./pages/AddProperty";
 import PropertyDetails from "./pages/PropertyDetails";
-import AvailableProperties from "./pages/AvailableProperties"; // Properties page
+import AvailableProperties from "./pages/AvailableProperties";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -23,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/properties" element={<AvailableProperties />} />
+        <Route path="/properties/:id" element={<PropertyDetails />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
@@ -35,7 +35,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/property/:id" element={<PropertyDetails />} />
       </Routes>
       <Footer />
     </>

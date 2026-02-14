@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
 import "../components/PropertyCard.css";
 
 export default function AvailableProperties() {
-  const allProperties = [
+
+  const navigate = useNavigate();
+
+  const defaultProperties = [
     {
       id: 1,
       title: "2BHK Apartment",
@@ -11,6 +15,7 @@ export default function AvailableProperties() {
       price: "80",
       type: "Apartment",
       image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+      description: "Spacious 2BHK apartment in prime Mumbai location."
     },
     {
       id: 2,
@@ -19,6 +24,7 @@ export default function AvailableProperties() {
       price: "150",
       type: "Villa",
       image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be",
+      description: "Premium luxury villa with modern amenities."
     },
     {
       id: 3,
@@ -27,6 +33,7 @@ export default function AvailableProperties() {
       price: "60",
       type: "Plot",
       image: "https://images.unsplash.com/photo-1523217582562-09d0def993a6",
+      description: "Affordable residential plot in growing area."
     },
     {
       id: 4,
@@ -35,6 +42,7 @@ export default function AvailableProperties() {
       price: "95",
       type: "Apartment",
       image: "https://images.unsplash.com/photo-1599423300746-b62533397364",
+      description: "Modern apartment in IT hub Bangalore."
     },
     {
       id: 5,
@@ -43,6 +51,7 @@ export default function AvailableProperties() {
       price: "220",
       type: "Villa",
       image: "https://images.unsplash.com/photo-1505691938895-1758d7feb511",
+      description: "Luxury beachside villa with ocean view."
     },
     {
       id: 6,
@@ -51,10 +60,19 @@ export default function AvailableProperties() {
       price: "70",
       type: "Apartment",
       image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914",
+      description: "Affordable apartment in Hyderabad city center."
     },
   ];
 
-  const [properties, setProperties] = useState(allProperties);
+  const [allProperties, setAllProperties] = useState([]);
+  const [properties, setProperties] = useState([]);
+
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem("properties")) || [];
+    const combined = [...defaultProperties, ...stored];
+    setAllProperties(combined);
+    setProperties(combined);
+  }, []);
 
   const handleSearch = ({ location, type, budget }) => {
     let filtered = allProperties;
@@ -64,11 +82,15 @@ export default function AvailableProperties() {
         p.location.toLowerCase().includes(location.toLowerCase())
       );
     }
+
     if (type) {
       filtered = filtered.filter((p) => p.type === type);
     }
+
     if (budget) {
-      filtered = filtered.filter((p) => Number(p.price) <= Number(budget));
+      filtered = filtered.filter(
+        (p) => Number(p.price) <= Number(budget)
+      );
     }
 
     setProperties(filtered);
@@ -78,6 +100,7 @@ export default function AvailableProperties() {
     <div className="property-list">
       <h2>Available Properties</h2>
       <SearchBar onSearch={handleSearch} />
+
       <div className="property-grid">
         {properties.map((p) => (
           <div key={p.id} className="property-card">
@@ -85,10 +108,19 @@ export default function AvailableProperties() {
             <h3>{p.title}</h3>
             <p>{p.location}</p>
             <p>{p.price} Lakhs</p>
-            <button className="details-btn">View Details</button>
+
+            <button
+              className="details-btn"
+              onClick={() => navigate(`/properties/${p.id}`)}
+            >
+              View Details
+            </button>
           </div>
         ))}
-        {properties.length === 0 && <p>No properties match your search.</p>}
+
+        {properties.length === 0 && (
+          <p>No properties match your search.</p>
+        )}
       </div>
     </div>
   );

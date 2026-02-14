@@ -1,6 +1,6 @@
 // src/components/Navbar.js
 
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { AuthContext } from "./AuthContext";
@@ -8,10 +8,15 @@ import { AuthContext } from "./AuthContext";
 export default function Navbar() {
   const { token, user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   function handleLogout() {
     logout();
     navigate("/");
+  }
+
+  function toggleMenu() {
+    setMenuOpen(!menuOpen);
   }
 
   return (
@@ -21,35 +26,32 @@ export default function Navbar() {
           Dwellix
         </Link>
 
-        <nav className="nav-links">
-          <Link to="/">Home</Link>
-          <Link to="/properties">Properties</Link>
-          <Link to="/about">About</Link>
-          <Link to="/post">Post Property</Link>
-        </nav>
+        <div className="hamburger" onClick={toggleMenu}>
+          ☰
+        </div>
 
-        <div className="nav-actions">
+        <nav className={`nav-links ${menuOpen ? "active" : ""}`}>
+          <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
+          <Link to="/properties" onClick={() => setMenuOpen(false)}>Properties</Link>
+          <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
+          <Link to="/add-property" onClick={() => setMenuOpen(false)}>Post Property</Link>
+
           {token ? (
             <>
-              <span className="welcome">Hi, {user?.name || "User"}</span>
-              <Link to="/post" className="btn primary">
-                Post Property
-              </Link>
+              <span className="welcome">
+                Hi, {user?.name || user?.email || "User"}
+              </span>
               <button className="btn" onClick={handleLogout}>
                 Logout
               </button>
             </>
           ) : (
             <>
-              <Link to="/login" className="btn">
-                Login
-              </Link>
-              <Link to="/signup" className="btn primary">
-                Signup
-              </Link>
+              <Link to="/login" className="btn">Login</Link>
+              <Link to="/signup" className="btn primary">Signup</Link>
             </>
           )}
-        </div>
+        </nav>
       </div>
     </header>
   );

@@ -1,10 +1,12 @@
 // src/pages/AddProperty.js
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../components/AuthContext";
-import "../styles/PostProperty.css";
+import { useNavigate } from "react-router-dom";
+import "./PostProperty.css";
 
 export default function AddProperty() {
   const { token } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const [form, setForm] = useState({
     title: "",
@@ -21,37 +23,33 @@ export default function AddProperty() {
     }));
   }
 
-  async function submit(e) {
+  function submit(e) {
     e.preventDefault();
 
-    try {
-      const res = await fetch("http://localhost:5000/api/properties", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token ? `Bearer ${token}` : ""
-        },
-        body: JSON.stringify(form)
-      });
+    // Get existing properties
+    const existing = JSON.parse(localStorage.getItem("properties")) || [];
 
-      const data = await res.json();
+    const newProperty = {
+      id: Date.now(),
+      ...form,
+      image: form.image || "https://images.pexels.com/photos/259950/pexels-photo-259950.jpeg"
+    };
 
-      if (res.ok) {
-        alert(data.message || "Property added successfully");
-        setForm({
-          title: "",
-          price: "",
-          location: "",
-          description: "",
-          image: ""
-        });
-      } else {
-        alert(data.message || "Failed to add property");
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Backend not connected (demo mode).");
-    }
+    const updated = [...existing, newProperty];
+
+    localStorage.setItem("properties", JSON.stringify(updated));
+
+    alert("Property added successfully 🎉");
+
+    setForm({
+      title: "",
+      price: "",
+      location: "",
+      description: "",
+      image: ""
+    });
+
+    navigate("/properties");
   }
 
   if (!token) {
@@ -91,7 +89,6 @@ export default function AddProperty() {
               name="price"
               value={form.price}
               onChange={change}
-              placeholder="e.g. 85"
               required
             />
           </div>
@@ -102,7 +99,6 @@ export default function AddProperty() {
               name="location"
               value={form.location}
               onChange={change}
-              placeholder="e.g. Mumbai"
               required
             />
           </div>
@@ -124,7 +120,6 @@ export default function AddProperty() {
               value={form.description}
               onChange={change}
               rows="4"
-              placeholder="Describe your property..."
             />
           </div>
 

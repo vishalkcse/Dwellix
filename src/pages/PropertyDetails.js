@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import SearchBar from "../components/SearchBar";
-// import "../components/PropertyCard.css";
+// src/pages/PropertyDetails.js
+import React, { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
 import "./PropertyDetails.css";
 
+export default function PropertyDetails() {
+  const { id } = useParams();
+  const [property, setProperty] = useState(null);
 
-export default function AvailableProperties() {
-  const allProperties = [
+  const defaultProperties = [
     {
       id: 1,
       title: "2BHK Apartment",
@@ -13,6 +15,7 @@ export default function AvailableProperties() {
       price: "80",
       type: "Apartment",
       image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+      description: "Spacious 2BHK apartment in prime Mumbai location."
     },
     {
       id: 2,
@@ -21,6 +24,7 @@ export default function AvailableProperties() {
       price: "150",
       type: "Villa",
       image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be",
+      description: "Premium luxury villa with modern interiors."
     },
     {
       id: 3,
@@ -29,6 +33,7 @@ export default function AvailableProperties() {
       price: "60",
       type: "Plot",
       image: "https://images.unsplash.com/photo-1523217582562-09d0def993a6",
+      description: "Perfect residential plot in growing area."
     },
     {
       id: 4,
@@ -37,6 +42,7 @@ export default function AvailableProperties() {
       price: "95",
       type: "Apartment",
       image: "https://images.unsplash.com/photo-1599423300746-b62533397364",
+      description: "Modern apartment with smart features."
     },
     {
       id: 5,
@@ -45,6 +51,7 @@ export default function AvailableProperties() {
       price: "220",
       type: "Villa",
       image: "https://images.unsplash.com/photo-1505691938895-1758d7feb511",
+      description: "Beautiful beachside villa with sea view."
     },
     {
       id: 6,
@@ -53,44 +60,57 @@ export default function AvailableProperties() {
       price: "70",
       type: "Apartment",
       image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914",
+      description: "Affordable city apartment in prime location."
     },
   ];
 
-  const [properties, setProperties] = useState(allProperties);
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem("properties")) || [];
+    const combined = [...defaultProperties, ...stored];
 
-  const handleSearch = ({ location, type, budget }) => {
-    let filtered = allProperties;
+    const found = combined.find(
+      (p) => String(p.id) === String(id)
+    );
 
-    if (location) {
-      filtered = filtered.filter((p) =>
-        p.location.toLowerCase().includes(location.toLowerCase())
-      );
-    }
-    if (type) {
-      filtered = filtered.filter((p) => p.type === type);
-    }
-    if (budget) {
-      filtered = filtered.filter((p) => Number(p.price) <= Number(budget));
-    }
+    setProperty(found);
+  }, [id]);
 
-    setProperties(filtered);
-  };
+  if (!property) {
+    return (
+      <div style={{ textAlign: "center", padding: "60px" }}>
+        <h2>Property Not Found</h2>
+        <Link to="/properties">← Back to Properties</Link>
+      </div>
+    );
+  }
 
   return (
-    <div className="property-list">
-      <h2>Available Properties</h2>
-      <SearchBar onSearch={handleSearch} />
-      <div className="property-grid">
-        {properties.map((p) => (
-          <div key={p.id} className="property-card">
-            <img src={p.image} alt={p.title} className="property-image" />
-            <h3>{p.title}</h3>
-            <p>{p.location}</p>
-            <p>{p.price} Lakhs</p>
-            <button className="details-btn">View Details</button>
+    <div className="details-container">
+      <div className="details-card">
+
+        {/* Property Image */}
+        <img src={property.image} alt={property.title} />
+
+        <div className="details-content">
+
+          <h2>{property.title}</h2>
+
+          <p><strong>Location:</strong> {property.location}</p>
+          <p><strong>Type:</strong> {property.type}</p>
+
+          <div className="price-highlight">
+            ₹ {property.price} Lakhs
           </div>
-        ))}
-        {properties.length === 0 && <p>No properties match your search.</p>}
+
+          <div className="description-box">
+            {property.description || "No description provided."}
+          </div>
+
+          <Link to="/properties" className="back-btn">
+            ← Back to Properties
+          </Link>
+
+        </div>
       </div>
     </div>
   );

@@ -1,16 +1,13 @@
 // src/components/ProtectedRoute.js
-import React from "react";
+import React, { useContext } from "react";
 import { Navigate } from "react-router-dom";
-
-const isAuthenticated = false; // replace with your auth logic
+import { AuthContext } from "./AuthContext";
 
 function ProtectedRoute({ children }) {
-  if (!isAuthenticated) {
-    return (
-      <div className="login-warning">
-        Please <a href="/login">login</a> to post property.
-      </div>
-    );
+  const { user } = useContext(AuthContext);
+
+  if (!user) {
+    return <Navigate to="/login" />;
   }
 
   return children;
