@@ -1,5 +1,7 @@
 /* src/styles/PostProperty.css */
 
+/* Login message */
+
 .login-message-container {
   max-width: 500px;
   margin: 80px auto;
@@ -17,13 +19,61 @@
   border: 2px solid #ffb400;
 }
 
-.login-message a {
-  color: #ff6f00;
-  font-weight: 700;
-  text-decoration: underline;
-  margin-left: 6px;
+/* Form styling */
+
+.post-wrapper {
+  padding: 40px 20px;
+  background-color: #f5f5f5;
+  min-height: 80vh;
 }
 
-.login-message a:hover {
-  color: #c55c00;
+.post-card {
+  max-width: 700px;
+  margin: auto;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.subtitle {
+  text-align: center;
+  color: gray;
+  margin-bottom: 20px;
+}
+
+.post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.post-btn {
+  background-color: #D4AF37;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.post-btn:hover {
+  background-color: #b9962f;
 }
