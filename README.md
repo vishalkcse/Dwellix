@@ -1,36 +1,34 @@
 # 🏡 Dwellix
 
-A modern real estate web application built with React.js that allows users to browse, search, and explore property listings with a clean and responsive UI.
+**Dwellix** is a modern real estate web application built with **React.js** that allows users to browse, search, and explore property listings through a clean, responsive, and professional UI.
+
+🔗 **Live Website:** [https://dwellix.netlify.app](https://dwellix.netlify.app)
 
 ---
 
-## 🚀 Live Demo
+## ✨ Features
 
-🔗 [https://your-netlify-link.netlify.app](https://your-netlify-link.netlify.app)
-*(Update this with your deployed link)*
-
----
-
-## 📌 Features
-
-* 🔍 Property search & filtering (Location, Type, Budget)
-* 🏘️ Property listing cards with images & details
-* 📄 Detailed property view page
-* 🔐 Authentication system (Login / Signup)
-* 🛡️ Protected routes for secured pages
-* 📱 Fully responsive design
+* 🔍 Search & filter properties (Location, Type, Budget)
+* 🏘️ Dynamic property listing cards
+* 📄 Individual property details page (Dynamic Routing)
+* 🔐 Login / Signup authentication flow
+* 🛡️ Protected routes (Post Property access control)
+* ➕ Add new property (stored locally)
+* 📱 Fully responsive layout
 * ⚡ Smooth UI with reusable components
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠 Tech Stack
 
-* **Frontend:** React.js (Create React App)
-* **Routing:** React Router
-* **Styling:** CSS3
-* **State Management:** React Hooks
-* **Deployment:** Netlify
-* **Version Control:** Git & GitHub
+| Technology     | Usage                |
+| -------------- | -------------------- |
+| React.js (CRA) | Frontend framework   |
+| React Router   | Client-side routing  |
+| Context API    | Authentication state |
+| CSS3           | Custom styling       |
+| Netlify        | Deployment           |
+| Git & GitHub   | Version control      |
 
 ---
 
@@ -43,20 +41,19 @@ Dwellix/
 ├── src/
 │   ├── components/
 │   │   ├── Navbar.js
-│   │   ├── Hero.js
-│   │   ├── Filters.js
-│   │   ├── PropertyCard.js
 │   │   ├── Footer.js
+│   │   ├── SearchBar.js
 │   │   ├── ProtectedRoute.js
 │   │   └── AuthContext.js
 │   │
 │   ├── pages/
 │   │   ├── Home.js
-│   │   ├── Properties.js
+│   │   ├── AvailableProperties.js
 │   │   ├── PropertyDetails.js
 │   │   ├── Login.js
 │   │   ├── Signup.js
 │   │   ├── AddProperty.js
+│   │   ├── About.js
 │   │   └── Contact.js
 │   │
 │   └── App.js
@@ -75,7 +72,7 @@ Clone the repository:
 git clone https://github.com/vishalkcse/Dwellix.git
 ```
 
-Navigate into project:
+Navigate into the project:
 
 ```bash
 cd Dwellix
@@ -87,7 +84,7 @@ Install dependencies:
 npm install
 ```
 
-Run the development server:
+Start development server:
 
 ```bash
 npm start
@@ -101,162 +98,25 @@ npm run build
 
 ---
 
-## 🎯 Purpose
-
-This project was developed to demonstrate:
+## 🎯 What This Project Demonstrates
 
 * Component-based architecture in React
-* Client-side routing
-* Authentication flow handling
-* Clean UI/UX design
-* Deployment workflow using GitHub → Netlify
+* Dynamic routing with URL parameters
+* Authentication & protected route handling
+* State management using React Hooks
+* Clean UI/UX design principles
+* CI/CD deployment using GitHub → Netlify
 
 ---
 
 ## 👨‍💻 Author
 
 **Vishal Kumar**
-GitHub: [https://github.com/vishalkcse](https://github.com/vishalkcse)
+🔗 GitHub: [https://github.com/vishalkcse](https://github.com/vishalkcse)
 
 ---
 
-## 📄 License
+## 📌 Status
 
-This project is for educational and portfolio purposes.
-
----
-
-If you want, I can also:
-
-* Make a more **startup-style README**
-* Add badges (React, Netlify, License, etc.)
-* Or make it more concise for recruiters
-
-Tell me the vibe you want 👌
-Perfect. Let’s make this internship-ready and clean.
-Below is a professional **README.md** for **Dwellix** 👇
-You can copy-paste this directly.
-
----
-
-# 🏡 Dwellix
-
-A modern real estate web application built with React.js that allows users to browse, search, and explore property listings with a clean and responsive UI.
-
----
-
-## 🚀 Live Demo
-
-🔗 [https://your-netlify-link.netlify.app](https://your-netlify-link.netlify.app)
-*(Update this with your deployed link)*
-
----
-
-## 📌 Features
-
-* 🔍 Property search & filtering (Location, Type, Budget)
-* 🏘️ Property listing cards with images & details
-* 📄 Detailed property view page
-* 🔐 Authentication system (Login / Signup)
-* 🛡️ Protected routes for secured pages
-* 📱 Fully responsive design
-* ⚡ Smooth UI with reusable components
-
----
-
-## 🛠️ Tech Stack
-
-* **Frontend:** React.js (Create React App)
-* **Routing:** React Router
-* **Styling:** CSS3
-* **State Management:** React Hooks
-* **Deployment:** Netlify
-* **Version Control:** Git & GitHub
-
----
-
-## 📂 Project Structure
-
-```
-Dwellix/
-│
-├── public/
-├── src/
-│   ├── components/
-│   │   ├── Navbar.js
-│   │   ├── Hero.js
-│   │   ├── Filters.js
-│   │   ├── PropertyCard.js
-│   │   ├── Footer.js
-│   │   ├── ProtectedRoute.js
-│   │   └── AuthContext.js
-│   │
-│   ├── pages/
-│   │   ├── Home.js
-│   │   ├── Properties.js
-│   │   ├── PropertyDetails.js
-│   │   ├── Login.js
-│   │   ├── Signup.js
-│   │   ├── AddProperty.js
-│   │   └── Contact.js
-│   │
-│   └── App.js
-│
-├── package.json
-└── README.md
-```
-
----
-
-## ⚙️ Installation & Setup
-
-Clone the repository:
-
-```bash
-git clone https://github.com/vishalkcse/Dwellix.git
-```
-
-Navigate into project:
-
-```bash
-cd Dwellix
-```
-
-Install dependencies:
-
-```bash
-npm install
-```
-
-Run the development server:
-
-```bash
-npm start
-```
-
-Build for production:
-
-```bash
-npm run build
-```
-
----
-
-## 🎯 Purpose
-
-This project was developed to demonstrate:
-
-* Component-based architecture in React
-* Client-side routing
-* Authentication flow handling
-* Clean UI/UX design
-* Deployment workflow using GitHub → Netlify
-
----
-
-## 👨‍💻 Author
-
-**Vishal Kumar**
-GitHub: [https://github.com/vishalkcse](https://github.com/vishalkcse)
-
----
+✅ Live & Deployed
+🚀 Actively improving features
