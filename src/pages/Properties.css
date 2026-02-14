@@ -1,0 +1,51 @@
+/* PostProperty.css */
+
+.post-property {
+  max-width: 700px;
+  margin: 24px auto;
+  background: #fff;
+  padding: 18px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+}
+
+.post-property form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.post-property input,
+.post-property textarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.login-message-container {
+  max-width: 500px;
+  margin: 80px auto;
+  text-align: center;
+}
+
+.login-message {
+  background: #ffe082;
+  color: #ff6f00;
+  padding: 25px 20px;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(255, 176, 0, 0.3);
+  border: 2px solid #ffb400;
+}
+
+.login-message a {
+  color: #ff6f00;
+  font-weight: 700;
+  text-decoration: underline;
+  margin-left: 6px;
+}
+
+.login-message a:hover {
+  color: #c55c00;
+}

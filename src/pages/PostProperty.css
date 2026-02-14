@@ -1,0 +1,29 @@
+/* src/styles/PostProperty.css */
+
+.login-message-container {
+  max-width: 500px;
+  margin: 80px auto;
+  text-align: center;
+}
+
+.login-message {
+  background: #ffe082;
+  color: #ff6f00;
+  padding: 25px 20px;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(255, 176, 0, 0.3);
+  border: 2px solid #ffb400;
+}
+
+.login-message a {
+  color: #ff6f00;
+  font-weight: 700;
+  text-decoration: underline;
+  margin-left: 6px;
+}
+
+.login-message a:hover {
+  color: #c55c00;
+}

@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #0056b3;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Login Warning Message */
+.login-warning {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px 20px;
+  background-color: #fff3cd;  /* light yellow */
+  border: 1px solid #ffeeba;  /* yellow border */
+  border-radius: 8px;
+  color: #856404;              /* dark yellow text */
+  font-size: 18px;
+  text-align: center;
+  box-shadow: 0 0 8px rgba(255, 193, 7, 0.5);
+  font-weight: 600;
+  /* Use same font as body */
+  font-family: inherit;
+}
+
+.login-warning a {
+  color: #0056b3;              /* same blue as other links */
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login-warning a:hover {
+  color: #003d80;              /* darker blue on hover */
+  text-decoration: underline;
+}

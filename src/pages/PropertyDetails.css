@@ -1,0 +1,8 @@
+/* src/styles/PropertyDetails.css */
+.prop-details { padding: 24px 0; }
+.prop-grid { display:grid; grid-template-columns: 1fr 420px; gap:20px; align-items:start; max-width:1200px; margin:0 auto; }
+.prop-image img { width:100%; height:auto; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.08); }
+.prop-info h1 { margin:0 0 8px; }
+.price { color:#0a8a00; font-weight:700; margin-bottom:6px; }
+.location { color:#555; margin-bottom:12px; }
+@media (max-width:900px){ .prop-grid{ grid-template-columns:1fr; } }

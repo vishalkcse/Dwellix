@@ -1,0 +1,71 @@
+.home-page {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hero {
+  background: linear-gradient(to right, #2c7a7b, #205f5f);
+  color: white;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.explore-btn {
+  padding: 12px 24px;
+  background-color: #fff;
+  color: #2c7a7b;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.explore-btn:hover {
+  background-color: #f2f2f2;
+}
+
+.features {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.features h2 {
+  margin-bottom: 30px;
+  font-size: 28px;
+  color: #333;
+}
+
+.feature-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.feature-box {
+  flex: 1 1 250px;
+  max-width: 300px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.feature-box h3 {
+  color: #2c7a7b;
+  margin-bottom: 10px;
+}
+
+.feature-box p {
+  color: #555;
+}
